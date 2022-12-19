@@ -1,14 +1,13 @@
-import { access } from "node:fs/promises";
+import { ERRORS } from "../constants/constants.js";
+import { resolve } from "path";
 
-const checkFileExists = async (file) => {
+const cd = async (param) => {
   try {
-    await access(file);
-    return true;
+    const newPath = resolve(process.cwd(), param);
+    process.chdir(newPath);
   } catch (error) {
-    return false;
+    console.error(ERRORS.operation);
   }
 };
 
-const cd = async (dir) => {
-  await checkFileExists();
-};
+export default cd;

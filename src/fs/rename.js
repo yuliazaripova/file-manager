@@ -12,7 +12,6 @@ const checkFileExists = async (file) => {
 
 const rename = async (oldPath, newPath) => {
   try {
-    console.log({ oldPath, newPath });
     const isExist = await checkFileExists(newPath);
     if (isExist) {
       console.error("File already exists");

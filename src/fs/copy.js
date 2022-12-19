@@ -1,5 +1,6 @@
 import { createReadStream, createWriteStream } from "node:fs";
 import { join, basename } from "node:path";
+import { ERRORS } from "../constants/constants.js";
 
 const copy = async (source, des) => {
   const readableStream = createReadStream(source);

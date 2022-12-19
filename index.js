@@ -1,5 +1,4 @@
 import { homedir } from "os";
-import { resolve } from "path";
 import process from "node:process";
 import { Transform, pipeline } from "node:stream";
 import { getUsername } from "./src/helpers/args.js";
@@ -22,6 +21,7 @@ import getHash from "./src/hash/getHash.js";
 import compress from "./src/zip/compress.js";
 import decompress from "./src/zip/decompress.js";
 import { isValid, parseChunk } from "./src/helpers/validation.js";
+import cd from "./src/nwd/cd.js";
 
 const getCLI = (chunk) => {
   try {
@@ -38,8 +38,7 @@ const getCLI = (chunk) => {
       up();
     }
     if (command == COMMANDS.cd) {
-      const newPath = resolve(process.cwd(), ...param);
-      process.chdir(newPath);
+      cd(...param)
     }
     if (command === COMMANDS.ls) {
       list();
