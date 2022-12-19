@@ -1,4 +1,8 @@
-import { COMMANDS, ARGS_NUMBER } from "../constants/constants.js";
+import {
+  COMMANDS,
+  ARGS_NUMBER,
+  OS_ARGS_TYPES,
+} from "../constants/constants.js";
 
 const validateCommand = (command) => Object.values(COMMANDS).includes(command);
 
@@ -12,3 +16,6 @@ export const parseChunk = (str) => {
   const [command, ...param] = str.split(" ");
   return [command, param];
 };
+
+export const validateOS = (param) =>
+  Object.values(OS_ARGS_TYPES).includes(param);

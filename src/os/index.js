@@ -4,9 +4,14 @@ import getCpus from "./getCpus.js";
 import getEOL from "./getEOL.js";
 import getHomedir from "./getHomedir.js";
 import getUsername from "./getUsername.js";
+import { validateOS } from "../helpers/validation.js";
 
 const getOsInfo = (param) => {
   try {
+    if (!validateOS(param)) {
+      console.error(ERRORS.input);
+      return;
+    }
     if (param === OS_ARGS_TYPES.eol) {
       getEOL();
     }
